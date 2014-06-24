@@ -11,31 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624164022) do
+ActiveRecord::Schema.define(version: 20140624165228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "tow_trucks", force: true do |t|
-    t.text    "make"
-    t.text    "model"
-    t.text    "notes"
-    t.integer "year"
-    t.date    "acquired_on"
-    t.integer "mileage"
-    t.date    "serviced_on"
+    t.text     "make"
+    t.text     "model"
+    t.text     "notes"
+    t.integer  "year"
+    t.date     "acquired_on"
+    t.integer  "mileage"
+    t.date     "serviced_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "vehicles", force: true do |t|
-    t.text    "make"
-    t.text    "model"
-    t.text    "color"
-    t.integer "year"
-    t.text    "vin",          null: false
-    t.date    "acquired_on"
-    t.text    "notes"
-    t.date    "picked_up_on"
-    t.text    "vehicle_type", null: false
+    t.text     "make"
+    t.text     "model"
+    t.text     "color"
+    t.integer  "year"
+    t.text     "vin",           null: false
+    t.date     "acquired_on"
+    t.text     "notes"
+    t.date     "picked_up_on"
+    t.text     "vehicle_type",  null: false
+    t.decimal  "tow_fee"
+    t.boolean  "is_fully_paid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "vehicles", ["vehicle_type"], name: "index_vehicles_on_vehicle_type", using: :btree
